@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<hmtl lang="en">
+    <header>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather App</title>
+        <link rel="stylesheet" href="style.css">
+    </header>
+    <body>
+        <div id="search-bar">
+            <input id="search-bar-text" placeholder="Enter a city" type="text">
+            <button class="btn" id="search-bar-btn">Search</button>
+            <div class="btn" id="convert">
+                <p class="convert active" id="degC">°C</p>
+                <p class="convert"id="degF">°F</p>
+            </div>
+            
+        </div>
+        <div id="display-info">
+            <div id="display-cityname"><p id="city"></p></div>
+            <div id="display-weather-data">
+                <div id="display-primary-data">
+                    <div id="display-temp"><p id="temp"></p></div>
+                    <div id="display-desc"><p id="desc"></p></div>
+                </div>
+                <div id="display-secondary-data">
+                    <div id="display-high"><p id="high"></p></div>
+                    <div id="display-low"><p id="low"></p></div>
+                    <div id="display-feelsLike"><p id="feelsLike"></p></div>
+                    <div id="display-humidity"><p id="humidity"></p></div>
+                </div>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</hmtl>
