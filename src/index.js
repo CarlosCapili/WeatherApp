@@ -13,6 +13,8 @@ const displayHumidity = document.getElementById("humidity");
 const displayDesc = document.getElementById("desc");
 const convertDiv = document.getElementById("convert");
 
+//Toggle deg C or F, where true = C
+let toggleDeg = true;
 
 //Search when button or enter key is pressed
 search_bar_btn.addEventListener("click", () => {
@@ -33,9 +35,10 @@ convertDiv.addEventListener("click", () => {
     
     if (degPara[0].classList.contains("active")) {
         //Convert to F
+        toggleDeg = false;
         degPara[1].classList.add("active");
         degPara[0].classList.remove("active");
-       
+        console.log(displayTemp.textContent.slice(0,-1));
         displayData(Math.round(fData.convertToFahrenheit(displayTemp.textContent.slice(0,-1))), displayTemp);
         displayData(Math.round(fData.convertToFahrenheit(displayHigh.textContent.slice(6,-1))), displayHigh);
         displayData(Math.round(fData.convertToFahrenheit(displayLow.textContent.slice(5,-1))), displayLow);
@@ -43,9 +46,10 @@ convertDiv.addEventListener("click", () => {
         
     } else {
         //Convert to C
+        toggleDeg = true;
         degPara[0].classList.add("active");
         degPara[1].classList.remove("active");
-
+        console.log(displayTemp.textContent.slice(0,-1));
         displayData(Math.round(fData.convertToCelsius(displayTemp.textContent.slice(0,-1))), displayTemp);
         displayData(Math.round(fData.convertToCelsius(displayHigh.textContent.slice(6,-1))), displayHigh);
         displayData(Math.round(fData.convertToCelsius(displayLow.textContent.slice(5,-1))), displayLow);
@@ -65,10 +69,24 @@ async function getWeather() {
         const data = await fData.fetchWeather(search_bar_text.value);
         //console.log(data);
         const city = data.city;
-        const temp = Math.round(fData.kelvinToCel(data.temp));
-        const high = Math.round(fData.kelvinToCel(data.high));
-        const low = Math.round(fData.kelvinToCel(data.low));
-        const feelsLike = Math.round(fData.kelvinToCel(data.feelsLike));
+        let temp;
+        let high;
+        let low;
+        let feelsLike;
+
+        //If toggleDeg is true then it means Celsius
+        if (toggleDeg) {
+            temp = Math.round(fData.kelvinToCel(data.temp));
+            high = Math.round(fData.kelvinToCel(data.high));
+            low = Math.round(fData.kelvinToCel(data.low));
+            feelsLike = Math.round(fData.kelvinToCel(data.feelsLike));
+        } else {
+            temp = Math.round(fData.kelvinToF(data.temp));
+            high = Math.round(fData.kelvinToF(data.high));
+            low = Math.round(fData.kelvinToF(data.low));
+            feelsLike = Math.round(fData.kelvinToF(data.feelsLike));
+        }
+
         const humidity = data.humidity;
         const desc = data.desc;
         
@@ -108,7 +126,12 @@ function displayData(data, displayDiv) {
             text += "Feels Like: "; 
         } 
 
-        text += `${data}℃`;
+        if (toggleDeg) {
+            text += `${data}℃`;
+        } else {
+            text += `${data}℉`;
+        }
+        
         displayDiv.textContent = text;
 
     } else if (displayDiv.id === "humidity") {

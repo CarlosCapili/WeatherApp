@@ -22,6 +22,10 @@ function kelvinToCel(kelvin) {
     return (kelvin - 273.15);
 }
 
+function kelvinToF(kelvin) {
+    return ((9/5)*(kelvin - 273.15) + 32);
+}
+
 function convertToCelsius(f) {
     return ((f-32)/1.8);
 }
@@ -33,6 +37,7 @@ function convertToFahrenheit(c) {
 export {
     fetchWeather,
     kelvinToCel,
+    kelvinToF,
     convertToCelsius,
     convertToFahrenheit
 };
