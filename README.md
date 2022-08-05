@@ -1,3 +1,3 @@
 # WeatherApp
 Pull weather info from OpenWeather API
-[Click Here]([Demo](https://carloscapili.github.io/WeatherApp/dist/index.html))
+[Click Here](https://carloscapili.github.io/WeatherApp/dist/index.html)
