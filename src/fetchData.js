@@ -15,7 +15,6 @@ async function fetchWeather(city) {
     } catch (e) {
         console.log("Failed to fetch data from API");
     }
- 
 }
 
 function kelvinToCel(kelvin) {
