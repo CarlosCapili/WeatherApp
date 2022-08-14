@@ -44,27 +44,41 @@ input:focus {
     background-color: rgb(56, 56, 56);
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 60px;
+}
+
+/* Header */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
 }
 
 #convert {
     display: flex;
-    margin-left: 20px;
-    padding: 0px;
+    background-color: rgb(56, 56, 56);
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    height: 35px;
+    text-align: center;
+    margin-right: 30px;
 }
 
 #weatherName {
     padding: 20px;
-    color: #ffffff;
     font-size: 25px;
 }
 
 .convert {
    padding: 7px 12px 7px 12px;
-   background-color: rgb(231, 231, 231);
+   border-radius: 20px;
+   width: 50px
 }
 
 .active {
-    background-color: rgb(212, 211, 211);
+    background-color: rgb(30, 95, 216);
 }
 
 .btn {
@@ -85,14 +99,15 @@ input:focus {
 #display-info {
     color: #ffffff;
     max-width: 700px; 
-    padding: 30px;
+    padding: 20px;
     margin: auto;
-    /* background-color: rgb(57, 78, 134); */
+    /* background-color: #000f3d; */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 
 #display-weather-data {
-    /* background-color: bisque; */
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 #display-cityname {
@@ -101,10 +116,11 @@ input:focus {
 }
 
 #display-primary-data {
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    margin-bottom: 30px;
+    justify-content: space-evenly; */
+    margin-bottom: 30px; 
+    text-align: center;
 }
 
 #display-secondary-data { 
