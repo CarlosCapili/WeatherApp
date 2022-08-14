@@ -3,17 +3,25 @@
     <header>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <title>Weather App</title>
         <link rel="stylesheet" href="style.css">
     </header>
     <body>
+        <div id="weatherTitle">
+            <h1 id="weatherName">Weather Network</h1>
+        </div>
         <div id="search-bar">
-            <input id="search-bar-text" placeholder="Enter a city" type="text">
+            <span class="material-symbols-outlined">search</span>
+            <input id="search-bar-text" placeholder="Search for a city" type="text">
             <button class="btn" id="search-bar-btn">Search</button>
-            <div class="btn" id="convert">
+            <!-- <div class="btn" id="convert">
                 <p class="convert active" id="degC">°C</p>
                 <p class="convert"id="degF">°F</p>
-            </div>
+            </div> -->
         </div>
         <div id="display-info">
             <div id="display-cityname"><p id="city"></p></div>

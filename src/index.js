@@ -58,10 +58,10 @@ convertDiv.addEventListener("click", () => {
 });
 
 //Set default weather to Toronto on first display
-(function defaultWeather() {
-    search_bar_text.value = "Toronto";
-    search_bar_btn.click();
-})();
+// (function defaultWeather() {
+//     search_bar_text.value = "Toronto";
+//     search_bar_btn.click();
+// })();
 
 //Get the data and place them in vars
 async function getWeather() {
