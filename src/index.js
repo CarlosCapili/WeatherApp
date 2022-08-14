@@ -29,19 +29,26 @@ search_bar_text.addEventListener("keypress", (e) => {
     }
 });
 
+// Set default weather to Toronto on first display
+(function defaultWeather() {
+    search_bar_text.value = "Toronto";
+    search_bar_btn.click();
+})();
+
 //When the degree converter is clicked switch the active class to the opposite deg
 convertDiv.addEventListener("click", () => {
     const degPara = document.getElementsByClassName("convert");
-    
+
     if (degPara[0].classList.contains("active")) {
         //Convert to F
         toggleDeg = false;
         degPara[1].classList.add("active");
         degPara[0].classList.remove("active");
-        console.log(displayTemp.textContent.slice(0,-1));
+        //console.log(displayTemp.textContent.slice(0,-1));
+
         displayData(Math.round(fData.convertToFahrenheit(displayTemp.textContent.slice(0,-1))), displayTemp);
-        displayData(Math.round(fData.convertToFahrenheit(displayHigh.textContent.slice(6,-1))), displayHigh);
-        displayData(Math.round(fData.convertToFahrenheit(displayLow.textContent.slice(5,-1))), displayLow);
+        displayData(Math.round(fData.convertToFahrenheit(displayHigh.textContent.slice(3,-1))), displayHigh);
+        displayData(Math.round(fData.convertToFahrenheit(displayLow.textContent.slice(3,-1))), displayLow);
         displayData(Math.round(fData.convertToFahrenheit(displayFeelsLike.textContent.slice(12,-1))), displayFeelsLike);
         
     } else {
@@ -49,19 +56,15 @@ convertDiv.addEventListener("click", () => {
         toggleDeg = true;
         degPara[0].classList.add("active");
         degPara[1].classList.remove("active");
-        console.log(displayTemp.textContent.slice(0,-1));
+        //console.log(displayTemp.textContent.slice(0,-1));
+
         displayData(Math.round(fData.convertToCelsius(displayTemp.textContent.slice(0,-1))), displayTemp);
-        displayData(Math.round(fData.convertToCelsius(displayHigh.textContent.slice(6,-1))), displayHigh);
-        displayData(Math.round(fData.convertToCelsius(displayLow.textContent.slice(5,-1))), displayLow);
+        displayData(Math.round(fData.convertToCelsius(displayHigh.textContent.slice(3,-1))), displayHigh);
+        displayData(Math.round(fData.convertToCelsius(displayLow.textContent.slice(3,-1))), displayLow);
         displayData(Math.round(fData.convertToCelsius(displayFeelsLike.textContent.slice(12,-1))), displayFeelsLike);
     }
 });
 
-//Set default weather to Toronto on first display
-// (function defaultWeather() {
-//     search_bar_text.value = "Toronto";
-//     search_bar_btn.click();
-// })();
 
 //Get the data and place them in vars
 async function getWeather() {
@@ -117,20 +120,22 @@ function displayData(data, displayDiv) {
         let text = "";
 
         if (displayDiv.id === "high") {
-            text += "High: ";
+            text += "H: ";
         }
         if (displayDiv.id === "low") {
-            text += "Low: ";
+            text += "L: ";
         }
         if (displayDiv.id === "feelsLike") {
             text += "Feels Like: "; 
         } 
 
-        if (toggleDeg) {
-            text += `${data}℃`;
-        } else {
-            text += `${data}℉`;
-        }
+        // if (toggleDeg) {
+        //     text += `${data}℃`;
+        // } else {
+        //     text += `${data}℉`;
+        // }
+
+        text += data + "\u00B0";
         
         displayDiv.textContent = text;
 
@@ -140,4 +145,6 @@ function displayData(data, displayDiv) {
         displayDiv.textContent = data;
     }
 }
+
+
 
